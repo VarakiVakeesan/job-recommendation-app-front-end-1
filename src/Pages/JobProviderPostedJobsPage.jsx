@@ -1,7 +1,8 @@
 import React from 'react';
 import "./JobProviderDashpoardPage.css";
 import SidebarComponent from '../Components/DashBoardComponentJobProvider/SideBar.jsx';
-const JobProviderDashBoardPage = () => {
+import PostedJobs from '../Components/DashBoardComponentJobProvider/PostedJobs.jsx';
+const JobProviderPostedJobs = () => {
     return ( <div>
                 <div className="layout">
           <div className="sidebar">
@@ -10,14 +11,15 @@ const JobProviderDashBoardPage = () => {
             {/* Add sidebar content here */}
           </div>
           <div className="content">
-            <h2>Dashboard Section</h2>
+            <h2>Posted Jobs</h2>
             {/* Add main content here */}
+            <PostedJobs/>
           </div>
         </div>
         
     </div> );
 }
  
-export default JobProviderDashBoardPage;
+export default JobProviderPostedJobs;
 
 

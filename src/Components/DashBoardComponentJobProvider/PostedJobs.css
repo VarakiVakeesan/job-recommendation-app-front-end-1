@@ -1,0 +1,142 @@
+/* PostedJobs.css */
+.posted-jobs-container {
+  padding: 20px;
+}
+
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.job-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.status-badge.red {
+  background-color: #ffcccb;
+  color: #d8000c;
+}
+
+.status-badge.green {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.skill-badge {
+  background-color: #e9ecef;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 0.8em;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.applicants-btn, .edit-btn, .delete-btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.applicants-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-btn {
+  background-color: #ffc107;
+  color: black;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  z-index: 1001;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.cancel-btn, .confirm-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.confirm-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Blur effect */
+body.modal-open .posted-jobs-container {
+  filter: blur(5px);
+  transition: filter 0.3s ease-out;
+}
+
+body.modal-open {
+  overflow: hidden;
+}

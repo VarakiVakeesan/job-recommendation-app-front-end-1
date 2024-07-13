@@ -1,23 +1,21 @@
 // SignUpComponent.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
+import './SignupJobSeeker.css';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import './SignupJobSeeker.css';
-import SignUpImage from "../Resources/Images/Personal site-amico.png";
+import SignUpImage from "../Resources/Images/Personal site-amico.png"
 
-const SignUpJobSeekerComponent = () => {
+const SignUpJobProviderComponent = () => {
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    companyName: '',
     email: '',
     password: '',
     confirmPassword: '',
     userName: ''
   });
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,7 +31,7 @@ const SignUpJobSeekerComponent = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8081/jobseeker/create', {
+      const response = await axios.post('http://localhost:8081/jobprovider/create', {
         ...formData,
         registeredDate: new Date().toISOString().split('T')[0]
       });
@@ -45,10 +43,9 @@ const SignUpJobSeekerComponent = () => {
         console.log('User created:', response.data);
         toast.success('Account created successfully!');
         setTimeout(() => {
-          navigate('/login/jobSeeker');
+          navigate('/login/jobProvider');
         }, 2000);
       }
- 
     } catch (err) {
       setError('An error occurred. Please try again.');
       console.error(err);
@@ -57,31 +54,22 @@ const SignUpJobSeekerComponent = () => {
 
   return (
     <div className="signup-container">
-      <ToastContainer />
+            <ToastContainer />
       <div className="signup-image">
-        <img src={SignUpImage} alt="Login illustration" />
+      <img src={SignUpImage} alt="Login illustration" />
       </div>
       <div className="signup-form">
         <h2>Create Account</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-row">
-            <input
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-          </div>
+        <input
+            type="text"
+            name="companyName"
+            placeholder="Company Name"
+            value={formData.companyName}
+            onChange={handleChange}
+            required
+          />
+
           <input
             type="email"
             name="email"
@@ -125,4 +113,4 @@ const SignUpJobSeekerComponent = () => {
   );
 };
 
-export default SignUpJobSeekerComponent;
+export default SignUpJobProviderComponent;

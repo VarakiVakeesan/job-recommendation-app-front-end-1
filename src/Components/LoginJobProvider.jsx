@@ -44,7 +44,7 @@ const LoginJobProvider = () => {
         });
 
         // Redirect to job provider dashboard
-        navigate('/dashboard/jobprovider');
+        navigate('/profiledetails/jobprovider');
       } else {
         setError('Login failed. Please check your credentials.');
       }

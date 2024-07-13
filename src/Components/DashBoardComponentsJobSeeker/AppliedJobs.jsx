@@ -3,12 +3,13 @@ import axios from 'axios';
 import './AppliedJobs.css';
 
 const AppliedJobs = () => {
+  const roleid = localStorage.getItem('roleId');
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get('http://localhost:8081/application/jobs/1');
+        const response = await axios.get(`http://localhost:8081/application/jobs/${roleid}`);
         setJobs(response.data);
       } catch (error) {
         console.error('Error fetching jobs:', error);
@@ -32,7 +33,7 @@ const AppliedJobs = () => {
           <p><strong>Location:</strong> {job.jobLocation}</p>
           <p><strong>Posted on:</strong> {new Date(job.jobPostedDate).toLocaleDateString()}</p>
           <div className="skills">
-            {job.jobSkills.split(', ').map((skill, skillIndex) => (
+            {(job.jobSkills ? job.jobSkills.split(', '): []).map((skill, skillIndex) => (
               <span key={skillIndex} className="skill-tag">{skill}</span>
             ))}
           </div>

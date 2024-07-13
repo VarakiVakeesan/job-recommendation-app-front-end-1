@@ -1,0 +1,99 @@
+/* CompanyDetails.css */
+.company-details-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: table;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  input[readonly] {
+    background-color: #f0f0f0;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .cancel-button {
+    background-color: #f0f0f0;
+    color: #333;
+    margin-right: 10px;
+  }
+  
+  .save-button {
+    background-color: #009688;
+    color: white;
+  }
+  
+  .cancel-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .save-button:hover {
+    background-color: #009688;
+  }
+  
+  @media (max-width: 600px) {
+    .company-details-container {
+      padding: 15px;
+    }
+  
+    input {
+      font-size: 16px;
+    }
+  
+    .button-group {
+      flex-direction: column;
+    }
+  
+    button {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .cancel-button {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }

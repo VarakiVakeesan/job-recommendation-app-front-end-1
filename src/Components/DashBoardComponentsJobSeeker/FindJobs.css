@@ -42,14 +42,15 @@
     margin-bottom: 20px;
   }
   
-  .job-card {
-    width: 48%;
+  .job-card-jobseeker{
+    width: 100%;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 20px;
     background-color: #fff;
   }
   
+
   .job-header {
     display: flex;
     justify-content: space-between;

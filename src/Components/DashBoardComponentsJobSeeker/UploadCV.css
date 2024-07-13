@@ -120,3 +120,20 @@
   .update-btn:disabled {
     background-color: #cccccc;
   }
+
+  .dropzone {
+    border: 2px dashed #cccccc;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .dropzone.active {
+    border-color: #2196f3;
+  }
+  
+  .file-name {
+    margin-top: 10px;
+    font-weight: bold;
+  }

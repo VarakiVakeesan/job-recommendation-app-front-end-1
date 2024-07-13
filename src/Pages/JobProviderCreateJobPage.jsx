@@ -1,7 +1,8 @@
 import React from 'react';
 import "./JobProviderDashpoardPage.css";
 import SidebarComponent from '../Components/DashBoardComponentJobProvider/SideBar.jsx';
-const JobProviderDashBoardPage = () => {
+import CreateJob from '../Components/DashBoardComponentJobProvider/CreateJob.jsx';
+const JobProviderCreateJob = () => {
     return ( <div>
                 <div className="layout">
           <div className="sidebar">
@@ -10,7 +11,8 @@ const JobProviderDashBoardPage = () => {
             {/* Add sidebar content here */}
           </div>
           <div className="content">
-            <h2>Dashboard Section</h2>
+            {/* <h2>Create Job</h2> */}
+            <CreateJob/>
             {/* Add main content here */}
           </div>
         </div>
@@ -18,6 +20,6 @@ const JobProviderDashBoardPage = () => {
     </div> );
 }
  
-export default JobProviderDashBoardPage;
+export default JobProviderCreateJob;
 
 

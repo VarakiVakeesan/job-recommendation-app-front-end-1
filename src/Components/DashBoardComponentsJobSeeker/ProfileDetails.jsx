@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 
 const ProfileDetails = () => {
     const roleid = localStorage.getItem('roleId');
-    console.log();
 
   const [profile, setProfile] = useState({
     firstName: '',
@@ -15,7 +14,10 @@ const ProfileDetails = () => {
     phoneNumber: '',
     dob: '',
     gender: '',
-    registeredDate: ''
+    registeredDate: '',
+    skills: '',
+    education: '',
+    experience: ''
   });
 
   useEffect(() => {
@@ -43,26 +45,25 @@ const ProfileDetails = () => {
     }
     try {
       await axios.put(`http://localhost:8081/jobseeker/update/${roleid}`, profile);
-              // Redirect or update app state here
-              toast.success('Profile Updated successfully!', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-              });
+      toast.success('Profile Updated successfully!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     } catch (error) {
       console.error('Error updating profile:', error);
-        // Redirect or update app state here
-        toast.success('Profile Not successfully!', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-          });    }
+      toast.error('Profile update failed!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }
   };
 
   return (
@@ -157,6 +158,36 @@ const ProfileDetails = () => {
             name="registeredDate"
             value={profile.registeredDate}
             readOnly          
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="skills">Skills</label>
+          <textarea
+            id="skills"
+            name="skills"
+            value={profile.skills}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="education">Education</label>
+          <textarea
+            id="education"
+            name="education"
+            value={profile.education}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="experience">Experience</label>
+          <textarea
+            id="experience"
+            name="experience"
+            value={profile.experience}
+            onChange={handleChange}
+            required
           />
         </div>
         <div className="button-group">

@@ -3,8 +3,10 @@ import axios from 'axios';
 import './AllJobs.css';
 
 const AllJobs = () => {
+  const roleid = localStorage.getItem('roleId');
   const [jobs, setJobs] = useState([]);
   const [applications, setApplications] = useState([]);
+  
 
   useEffect(() => {
     fetchJobs();
@@ -30,7 +32,7 @@ const AllJobs = () => {
   };
 
   const getApplicationStatus = (jobId) => {
-    const application = applications.find(app => app.job.jobId === jobId);
+    const application = applications.find(app => app.job.jobId === jobId && app.jobSeeker.jobSeekerId === roleid);
     return application ? application.applicationStatus : false;
   };
 
@@ -39,11 +41,11 @@ const AllJobs = () => {
       await axios.post('http://localhost:8081/application/create', {
         applicationStatus: true,
         jobAppliedDate: new Date().toISOString(),
-        jobSeekerId: 1, // Assuming this is the current user's ID
+        jobSeekerId: roleid, // Assuming this is the current user's ID
         jobId: jobId
       });
       // Refetch applications to update the state
-      fetchApplications();
+      // fetchApplications();
     } catch (error) {
       console.error('Error applying for job:', error);
     }
@@ -69,14 +71,14 @@ const AllJobs = () => {
               <p><strong>Posted on:</strong> {new Date(job.jobPostedDate).toLocaleDateString()}</p>
             </div>
             <div className="job-skills">
-              {job.jobSkills.split(', ').map(skill => (
+              {(job.jobSkills ? job.jobSkills.split(', ') : []).map(skill => (
                 <span key={skill} className="skill">{skill}</span>
               ))}
             </div>
             <button 
               className={`apply-button ${applicationStatus ? 'applied' : ''}`} 
-              onClick={() => handleApply(job.jobId)}
               disabled={applicationStatus}
+              onClick={() => handleApply(job.jobId)}
             >
               {applicationStatus ? 'Applied' : 'Apply Now'}
             </button>

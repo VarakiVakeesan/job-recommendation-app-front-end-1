@@ -6,11 +6,14 @@ import "react-toastify/dist/ReactToastify.css";
 import "./FindJobs.css";
 
 const JobCard = ({ job, applications, onApplicationSubmit }) => {
+  const roleid = localStorage.getItem('roleId');
   const [isApplied, setIsApplied] = useState(false);
 
   useEffect(() => {
-    const application = applications.find((app) => app.job.jobId === job.jobId);
-    setIsApplied(application && application.applicationStatus);
+    const application = applications.find(
+      (app) => app.job.jobId === job.jobId && app.jobSeeker.jobSeekerId === roleid
+    );
+        // setIsApplied(application && application.applicationStatus);
   }, [applications, job.jobId]);
 
   const handleApply = async () => {
@@ -20,7 +23,7 @@ const JobCard = ({ job, applications, onApplicationSubmit }) => {
         {
           applicationStatus: true,
           jobAppliedDate: new Date().toISOString().split("T")[0], // Current date in YYYY-MM-DD format
-          jobSeekerId: 1, // Assuming the jobSeekerId is 1, you might want to get this dynamically
+          jobSeekerId: roleid, // Assuming the jobSeekerId is 1, you might want to get this dynamically
           jobId: job.jobId,
         }
       );
@@ -37,7 +40,7 @@ const JobCard = ({ job, applications, onApplicationSubmit }) => {
   };
 
   return (
-    <div className="job-card">
+    <div className=".job-card-jobseeker">
       <div className="job-header">
         <h2>{job.jobTitle}</h2>
         <span className="status1">Not Hired</span>
